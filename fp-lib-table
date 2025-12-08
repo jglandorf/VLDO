@@ -1,0 +1,5 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "PowerPole")(type "KiCad")(uri "${KIPRJMOD}/../Connectors_Powerpole.pretty")(options "")(descr "Anderson PowerPole"))
+  (lib (name "ac8es")(type "KiCad")(uri "C:/Users/Joe/Documents/KiCAD/ac8es.pretty")(options "")(descr ""))
+)
