@@ -83,4 +83,29 @@ Temperature measured with a Cen-Tech 69465 infrared pyrometer aimed at M1's blac
 | 300 | 65.4 | 60.3 |  
 | 360 | 66.6 | 62.6 |  
 
-  
+### Rds(on) Measurement  
+Rds(on) Measurement  
+The IRF4905S's "ON" resistance, Rds(on), was measured with a 
+[WEL-3005](https://www.hackster.io/john-bradnam/30w-constant-current-load-65ecdd) load tester 
+and a UT161E multimeter.  For each constant-current test of Id below, current was only turned 
+on for 3-4 seconds-- long enough to measure one parameter, but short enough to avoid significantly
+heating the device. 
+
+Device: IRF4905S from [this AliExpress vendor](https://www.aliexpress.us/item/3256806571411100.html).  
+Rds(on) = Vds / Id  
+
+| Vin, V |  Id, A | Vds, V | Vout, V | Rds(on)†, Ω |  
+| --- | --- | --- | ---- | --- |  
+| 13.33 | 0.00 | 1.13 | 12.16 | --- |  
+| 13.28 | 0.50 | 1.12 | 12.13 | 2.24 |  
+| 13.29 | 1.00 | 1.10 | 12.13 | 1.10 |  
+| 13.20 | 1.50 | 1.06 | 12.12 | 0.71 |  
+| 13.16 | 2.00 | 1.01 | 12.12 | 0.51 |  
+| 13.11 | 2.50 | 0.96 | 12.11 | 0.38 |  
+
+†Rds(on) is calculated; other table values are measured.
+
+At 2 amps, the LTSpice [simulation](design/vldo_nd6t1.asc) reports an Rds(on) value of ~21.6mΩ.  The OEM's IRF4905S [datasheet](datasheets/MOSFET_P-Channel-irf4905s-datasheet-en_Infineon.pdf) says it should be ~20mΩ @Vgs = -10V, Id = -42A.
+<img src="design/VLDO_LTSpice_simulation.png" alt="LTSpice simulation" height="50%" >  
+
+
