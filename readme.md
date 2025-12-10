@@ -89,7 +89,7 @@ The IRF4905S's "ON" resistance, Rds(on), was measured with a
 [WEL-3005](https://www.hackster.io/john-bradnam/30w-constant-current-load-65ecdd) load tester 
 and a UT161E multimeter.  For each constant-current test of Id below, current was only turned 
 on for 3-4 seconds-- long enough to measure one parameter, but short enough to avoid significantly
-heating the device. 
+heating the device. Power was supplied with a 9Ah LiFePo battery, nominal 12V output.
 
 Device: IRF4905S from [this AliExpress vendor](https://www.aliexpress.us/item/3256806571411100.html).  
 Rds(on) = Vds / Id  
@@ -109,3 +109,25 @@ At 2 amps, the LTSpice [simulation](design/vldo_nd6t1.asc) reports an Rds(on) va
 <img src="design/VLDO_LTSpice_simulation.png" alt="LTSpice simulation" height="50%" >  
 
 
+### Vdo (dropout voltage) Measurement
+The IRF4905S's dropout voltage, was measured with a 
+[WEL-3005](https://www.hackster.io/john-bradnam/30w-constant-current-load-65ecdd) load tester,
+a [UT161E](https://meters.uni-trend.com/product/ut161-series/) multimeter, and a [Hanmatek HM305](http://www.hanmatek.cn/en/index.php?s=/Show/index/cid/14/id/12.html) adjustable power supply.
+For each constant-current test of Id, below, current was only turned on for 3-4 seconds-- long enough to measure one parameter, but short enough to avoid significantly
+heating the device.  
+
+Dropout Voltage when Vin is close to the nomimal Vout:  
+| Vin, V |  Id, A | Vout, V | ΔVout-Vin, V |  
+| --- | --- | --- | ---- |  
+| 12.10 | 0.00 | 12.11 | 0.01 |  
+| 12.10 | 0.50 | 12.05 | -0.05 |  
+| 12.10 | 1.00 | 12.00 | -0.10 |  
+| 12.10 | 1.50 | 11.95 | -0.15 |  
+| 12.10 | 2.00 | 11.90 | -0.20 |  
+| 12.10 | 2.50 | 11.84 | -0.26 |  
+
+For a nominal QMX+ TX current of somewhat under 1A, the dropout voltage is ~150mV using the IRF4905S from [this AliExpress vendor](https://www.aliexpress.us/item/3256806571411100.html).  Vdo should be lower using a higher quality part.
+
+(Vout - Vin) Voltage at 1A:
+<img src="tests/Vdo_1A.png" alt="Dropout Voltage at 1A" height="50%" >  
+Additional data is [here](tests/vldo_tests.ods). 
